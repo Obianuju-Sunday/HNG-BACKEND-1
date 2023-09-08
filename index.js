@@ -9,7 +9,6 @@ app.get('/api', (req, res) => {
     const slackName = req.query.slack_name;
     const track = req.query.track;
 
-  if (slackName && track) {
     try { 
         const currentUtcTime = moment().utcOffset(0).format('YYYY-MM-DDTHH:mm:ss[Z]');
         const currentDayOfWeek = moment().format('dddd');
@@ -27,9 +26,6 @@ app.get('/api', (req, res) => {
     } catch (error) {
         res.status(500).json({message: error.message})
     }
-  } else {
-    res.status(400).json({error: 'invalid parameters'})
-  }
 });
 
 app.use(express.json());
