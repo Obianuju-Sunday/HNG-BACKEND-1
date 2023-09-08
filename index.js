@@ -11,8 +11,17 @@ app.get('/api', (req, res) => {
 
         const currentDateTime = DateTime.utc();
         const currentDayOfWeek = currentDateTime.toFormat('EEEE');
-        res.json({slackName, track, currentDayOfWeek, currentDateTime});
-
+        
+            const response = {
+                slack_name: slackName,
+                track: track,
+                currentDayOfWeek: currentDayOfWeek,
+                currentDateTime: currentDateTime,
+                githubFileUrl: 'https://github.com/Obianuju-Sunday/HNG-BACKEND-1/blob/main/index.js',
+                githubSourceCode: 'https://github.com/Obianuju-Sunday/HNG-BACKEND-1',
+                statusCode: '200'
+            }
+            res.status(200).json(response)
     } catch (error) {
         res.status(500).json({message: error.message})
     }
@@ -24,10 +33,29 @@ app.listen(2000, () =>{
     console.log(`Server started at port ${2000}`)
 });
 
+
+
+
+// // PROJECT DESCRIPTION
+
+// // Create and host an endpoint using any programming language of your choice.
+// // The endpoint should take two GET request query parameters and return specific information in JSON format.
+// // :spiral_note_pad: Requirements
+// // The information required includes:
+// // Slack name
+// // Current day of the week
+// // Current UTC time (with validation of +/-2)
+// // Track
+// // The GitHub URL of the file being run
+// // The GitHub URL of the full source code.
+// // A  Status Code of Success
+
+
+
 // const express = require('express');
 // const app = express();
 // // const bodyParser = require('body-parser');
-// // const { DateTime } = require('luxon'); // For date and time manipulation
+// const { DateTime } = require('luxon'); // For date and time manipulation
 
 // // Middleware to parse JSON and URL-encoded data
 // app.use(express.json());
