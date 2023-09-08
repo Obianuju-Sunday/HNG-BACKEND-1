@@ -19,7 +19,7 @@ app.get('/api', (req, res) => {
                 current_day: currentDayOfWeek,
                 utc_time: currentUtcTime,
                 github_file_url: 'https://github.com/Obianuju-Sunday/HNG-BACKEND-1/blob/main/index.js',
-                github_source_code: 'https://github.com/Obianuju-Sunday/HNG-BACKEND-1',
+                github_repo_url: 'https://github.com/Obianuju-Sunday/HNG-BACKEND-1',
                 status_code: 200
             }
             res.status(200).json(response)
