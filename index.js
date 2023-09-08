@@ -1,7 +1,7 @@
 
 const express = require('express');
 const app = express();
-const { DateTime } = require('luxon');
+const moment = require('moment');
 
 // GET API
 app.get('/api', (req, res) => {
@@ -11,17 +11,17 @@ app.get('/api', (req, res) => {
 
   if (slackName && track) {
     try { 
-        const currentDateTime = DateTime.utc();
-        const currentDayOfWeek = currentDateTime.toFormat('EEEE');
+        const currentUtcTime = moment().utcOffset(0).format('YYYY-MM-DDTHH:mm:ss[Z]');
+        const currentDayOfWeek = moment().format('dddd');
         
             const response = {
                 slack_name: slackName,
                 track: track,
-                currentDayOfWeek: currentDayOfWeek,
-                currentDateTime: currentDateTime,
-                githubFileUrl: 'https://github.com/Obianuju-Sunday/HNG-BACKEND-1/blob/main/index.js',
-                githubSourceCode: 'https://github.com/Obianuju-Sunday/HNG-BACKEND-1',
-                statusCode: '200'
+                current_day: currentDayOfWeek,
+                utc_time: currentUtcTime,
+                github_file_url: 'https://github.com/Obianuju-Sunday/HNG-BACKEND-1/blob/main/index.js',
+                github_source_code: 'https://github.com/Obianuju-Sunday/HNG-BACKEND-1',
+                status_code: 200
             }
             res.status(200).json(response)
     } catch (error) {
